@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+ * William Castellanos
+ * CST-250
+ * Activity 1
+ * 4/20/2026
+ * Citation: Grand Canyon University CST-250 Activity 1 Guide
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

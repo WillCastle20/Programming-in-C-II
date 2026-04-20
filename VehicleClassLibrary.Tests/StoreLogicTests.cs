@@ -1,4 +1,12 @@
-﻿using VehicleClassLibrary.Models;
+﻿/*
+ * William Castellanos
+ * CST-250
+ * Activity 1
+ * 4/20/2026
+ * Citation: Grand Canyon University CST-250 Activity 1 Guide
+ */
+
+using VehicleClassLibrary.Models;
 using VehicleClassLibrary.Services.BusinessLogicLayer;
 using Xunit;
 

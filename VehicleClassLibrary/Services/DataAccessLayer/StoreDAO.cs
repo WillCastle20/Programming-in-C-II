@@ -1,4 +1,12 @@
-﻿using System.Collections.Generic;
+﻿/*
+ * William Castellanos
+ * CST-250
+ * Activity 1
+ * 4/20/2026
+ * Citation: Grand Canyon University CST-250 Activity 1 Guide
+ */
+
+using System.Collections.Generic;
 using VehicleClassLibrary.Models;
 
 namespace VehicleClassLibrary.Services.DataAccessLayer
