@@ -6,6 +6,7 @@
  * Citation: Grand Canyon University CST-250 Activity 1 Guide
  */
 
+using System.Collections.Generic;
 using VehicleClassLibrary.Models;
 using VehicleClassLibrary.Services.BusinessLogicLayer;
 using Xunit;
@@ -15,57 +16,87 @@ namespace VehicleClassLibrary.Tests
     public class StoreLogicTests
     {
         [Fact]
-        public void GetInventory_ShouldReturnInventoryList()
+        public void AddVehicleToInventory_ShouldIncreaseInventoryCount()
         {
-            var store = new StoreLogic();
-            var car = new CarModel { Id = 1, Make = "Toyota", Model = "Camry", Year = 2020, Price = 25000m, NumWheels = 4, IsConvertible = true, TrunkSize = 2.5m };
+            // Arrange
+            StoreLogic store = new StoreLogic();
+            CarModel car = new CarModel(0, "Toyota", "Camry", 2020, 25000m, 4, true, 2.5m);
 
+            // Act
             store.AddVehicleToInventory(car);
-            var inventory = store.GetInventory();
+            List<VehicleModel> inventory = store.GetInventory();
 
-            Assert.NotNull(inventory);
-            Assert.Single(inventory);
+            // Assert
+            Assert.Equal(1, inventory.Count);
+            Assert.Equal("Toyota", inventory[0].Make);
         }
 
         [Fact]
-        public void AddVehicleToCart_ShouldAddVehicle()
+        public void GetInventory_ShouldReturnEmptyList_WhenNoVehiclesAdded()
         {
-            var store = new StoreLogic();
-            var car = new CarModel { Id = 1, Make = "Toyota", Model = "Camry", Year = 2020, Price = 25000m, NumWheels = 4, IsConvertible = true, TrunkSize = 2.5m };
+            // Arrange
+            StoreLogic store = new StoreLogic();
 
-            store.AddVehicleToCart(car);
-            var cart = store.GetShoppingCart();
+            // Act
+            List<VehicleModel> inventory = store.GetInventory();
 
-            Assert.Contains(car, cart);
+            // Assert
+            Assert.Empty(inventory);
         }
 
         [Fact]
-        public void GetShoppingCart_ShouldReturnCartList()
+        public void AddVehicleToCart_ShouldAddVehicle_WhenValidVehicleIdGiven()
         {
-            var store = new StoreLogic();
-            var car = new CarModel { Id = 1, Make = "Toyota", Model = "Camry", Year = 2020, Price = 25000m, NumWheels = 4, IsConvertible = true, TrunkSize = 2.5m };
+            // Arrange
+            StoreLogic store = new StoreLogic();
+            CarModel car = new CarModel(0, "Honda", "Civic", 2019, 20000m, 4, true, 2.5m);
 
-            store.AddVehicleToCart(car);
-            var cart = store.GetShoppingCart();
+            // Act
+            int vehicleId = store.AddVehicleToInventory(car);
+            int result = store.AddVehicleToCart(vehicleId);
+            List<VehicleModel> cart = store.GetShoppingCart();
 
-            Assert.NotNull(cart);
-            Assert.Single(cart);
+            // Assert
+            Assert.Equal(1, result);
+            Assert.Equal(1, cart.Count);
+            Assert.Equal(vehicleId, cart[0].Id);
         }
 
         [Fact]
-        public void Checkout_ShouldReturnTotalPrice()
+        public void GetShoppingCart_ShouldReturnEmptyList_WhenNoVehiclesAdded()
         {
-            var store = new StoreLogic();
+            // Arrange
+            StoreLogic store = new StoreLogic();
 
-            var car1 = new CarModel { Id = 1, Make = "Toyota", Model = "Camry", Year = 2020, Price = 25000m, NumWheels = 4, IsConvertible = true, TrunkSize = 2.5m };
-            var car2 = new CarModel { Id = 2, Make = "Honda", Model = "Civic", Year = 2021, Price = 20000m, NumWheels = 4, IsConvertible = false, TrunkSize = 2.0m };
+            // Act
+            List<VehicleModel> cart = store.GetShoppingCart();
 
-            store.AddVehicleToCart(car1);
-            store.AddVehicleToCart(car2);
+            // Assert
+            Assert.Empty(cart);
+        }
 
-            var total = store.Checkout();
+        [Fact]
+        public void Checkout_ShouldReturnCorrectTotal_AndClearCart()
+        {
+            // Arrange
+            StoreLogic store = new StoreLogic();
 
-            Assert.Equal(45000m, total);
+            CarModel car1 = new CarModel(0, "Ford", "F150", 2021, 40000m, 4, true, 2.5m);
+            CarModel car2 = new CarModel(0, "Chevrolet", "Silverado", 2022, 45000m, 4, true, 2.5m);
+
+            int id1 = store.AddVehicleToInventory(car1);
+            int id2 = store.AddVehicleToInventory(car2);
+
+            store.AddVehicleToCart(id1);
+            store.AddVehicleToCart(id2);
+
+            // Act
+            decimal total = store.Checkout();
+            List<VehicleModel> cartAfterCheckout = store.GetShoppingCart();
+
+            // Assert
+            Assert.Equal(85000m, total);
+            Assert.Empty(cartAfterCheckout);
         }
     }
 }

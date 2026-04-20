@@ -65,12 +65,6 @@ namespace VehicleClassLibrary.Models
         /// <summary>
         /// Parameterized constructor for VehicleModel.
         /// </summary>
-        /// <param name="id">The vehicle ID.</param>
-        /// <param name="make">The make of the vehicle.</param>
-        /// <param name="model">The model of the vehicle.</param>
-        /// <param name="year">The year of the vehicle.</param>
-        /// <param name="price">The price of the vehicle.</param>
-        /// <param name="numWheels">The number of wheels.</param>
         public VehicleModel(int id, string make, string model, int year, decimal price, int numWheels)
         {
             Id = id;
