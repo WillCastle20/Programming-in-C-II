@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleClassLibrary.Tests",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleStoreConsolApp", "VehicleStoreConsolApp\VehicleStoreConsolApp.csproj", "{0B59C08F-32C5-4732-81DA-30B336ACE65A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleStoreGUIApp", "VehicleStoreGUIApp\VehicleStoreGUIApp.csproj", "{8836E266-9838-46DB-88F1-7E34D146C1FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{0B59C08F-32C5-4732-81DA-30B336ACE65A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B59C08F-32C5-4732-81DA-30B336ACE65A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B59C08F-32C5-4732-81DA-30B336ACE65A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8836E266-9838-46DB-88F1-7E34D146C1FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8836E266-9838-46DB-88F1-7E34D146C1FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8836E266-9838-46DB-88F1-7E34D146C1FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8836E266-9838-46DB-88F1-7E34D146C1FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
