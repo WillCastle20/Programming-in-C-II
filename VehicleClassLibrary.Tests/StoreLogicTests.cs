@@ -14,7 +14,7 @@ using Xunit;
 namespace VehicleClassLibrary.Tests
 {
     public class StoreLogicTests
-    {
+    { 
         [Fact]
         public void AddVehicleToInventory_ShouldIncreaseInventoryCount()
         {
